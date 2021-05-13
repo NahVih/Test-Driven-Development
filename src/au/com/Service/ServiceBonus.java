@@ -5,8 +5,12 @@ import java.math.BigDecimal;
 public class ServiceBonus {
 
 	public void giveBonus(Employee employee, Score score) {
-			BigDecimal finalSalary = ((BigDecimal) employee.getSalary()).multiply(score.bonusAmount());
+		BigDecimal salary = employee.getSalary();
+		if (salary.compareTo(new BigDecimal("10000")) < 0)	{
+		BigDecimal finalSalary = score.bonusAmount().multiply(salary);
 			employee.setSalary(finalSalary);
+		} else
+			throw new IllegalArgumentException ("Salary higher than 10.000");
 	}
 			
 	
