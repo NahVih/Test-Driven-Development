@@ -10,7 +10,11 @@ public class Employee {
 
 	public Employee(String string, BigDecimal salary) {
 		this.name = string;
+		if (salary.compareTo(new BigDecimal("0")) > 0) {
 		this.salary = salary;
+		} else {
+			throw new IllegalArgumentException("Salary can not be less than 0");
+		}
 	}
 
 	public BigDecimal getSalary() {
